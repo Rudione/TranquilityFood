@@ -2,4 +2,10 @@
     <string name="app_name">TranquilityFood</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textFrHomeMain"><![CDATA[Tranquility <3]]></string>
+    <string name="welcome_text">Hi! Would you like to eat? :)</string>
+    <string name="popular_food_home">Popular food :P</string>
+    <string name="home_favorite">Its your favorite food, yeah?</string>
+    <string name="all_categories">All categories</string>
+    <string name="favorites_fr">favorites</string>
 </resources>
