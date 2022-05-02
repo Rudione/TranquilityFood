@@ -98,7 +98,8 @@
             android:id="@+id/cv_home_image_favorite"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/primary_luxury" />
+            android:background="@color/primary_luxury"
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 
