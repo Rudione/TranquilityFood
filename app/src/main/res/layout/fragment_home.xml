@@ -68,11 +68,11 @@
         app:layout_constraintStart_toStartOf="@id/ll_home_search"/>
 
     <TextView
-        android:id="@+id/text_home_favorite"
+        android:id="@+id/text_home_random"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_18sdp"
-        android:text="@string/home_favorite"
+        android:text="@string/text_home_random"
         android:textStyle="bold"
         android:textSize="@dimen/_18sdp"
         app:layout_constraintTop_toBottomOf="@+id/rc_home_popular"
@@ -81,7 +81,7 @@
         android:textColor="@color/primary_minor" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_home_favorite"
+        android:id="@+id/cv_home_random"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
 
@@ -89,13 +89,13 @@
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         app:cardUseCompatPadding="true"
-        app:layout_constraintTop_toBottomOf="@+id/text_home_favorite"
+        app:layout_constraintTop_toBottomOf="@+id/text_home_random"
         app:layout_constraintStart_toStartOf="@id/ll_home_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:cardCornerRadius="@dimen/_18sdp">
 
         <ImageView
-            android:id="@+id/cv_home_image_favorite"
+            android:id="@+id/cv_home_image_random"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/primary_luxury"
@@ -111,7 +111,7 @@
         android:text="@string/all_categories"
         android:textStyle="bold"
         android:textSize="@dimen/_18sdp"
-        app:layout_constraintTop_toBottomOf="@+id/cv_home_favorite"
+        app:layout_constraintTop_toBottomOf="@+id/cv_home_random"
         app:layout_constraintStart_toStartOf="@id/ll_home_search"
         android:fontFamily="@font/font_main2"
         android:textColor="@color/primary_minor" />

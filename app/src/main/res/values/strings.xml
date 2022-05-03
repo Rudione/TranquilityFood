@@ -8,4 +8,5 @@
     <string name="home_favorite">Its your favorite food, yeah?</string>
     <string name="all_categories">All categories</string>
     <string name="favorites_fr">favorites</string>
+    <string name="text_home_random">Its random food for you :)</string>
 </resources>

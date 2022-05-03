@@ -7,4 +7,5 @@
     <color name="primary_minor">#daced1</color>
     <color name="black">#9F000000</color>
     <color name="white">#E9FFFC</color>
+    <color name="red">#FF0010</color>
 </resources>
