@@ -2,10 +2,15 @@ package com.example.tranquilityfood.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.tranquilityfood.R
 import com.example.tranquilityfood.databinding.ActivityMealBinding
+import com.example.tranquilityfood.pojo.Meal
 import com.example.tranquilityfood.ui.fragments.HomeFragment
+import com.example.tranquilityfood.viewmodel.MealViewModel
 
 class MealActivity : AppCompatActivity() {
 
@@ -13,15 +18,32 @@ class MealActivity : AppCompatActivity() {
     private lateinit var idMeal: String
     private lateinit var nameMeal: String
     private lateinit var thumbMeal: String
+    private lateinit var mealViewModel: MealViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMealBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        mealViewModel = ViewModelProvider(this)[MealViewModel::class.java]
         getRandomMealInformation()
-
         setRandomMealInformation()
+
+        mealViewModel.getDetailsLiveData(idMeal)
+        observerGetMealInformation()
+    }
+
+    private fun observerGetMealInformation() {
+        mealViewModel.observeMealDetailsLiveData().observe(this
+        ) { meal ->
+            binding.activityMealTextCategories.text = "Category: ${meal!!.strCategory}"
+            binding.activityMealTextCountry.text = "Country: ${meal.strArea}"
+            binding.activityMealTextIntroduction.text = meal.strInstructions
+
+            Log.d("MealCategory", "its: ${meal.strCategory}")
+            Log.d("MealCategory", "its: ${meal.strArea}")
+            Log.d("MealCategory", "its: ${meal.strInstructions}")
+        }
     }
 
     private fun setRandomMealInformation() {
