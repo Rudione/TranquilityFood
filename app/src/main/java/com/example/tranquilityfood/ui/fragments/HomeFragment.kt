@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tranquilityfood.databinding.FragmentHomeBinding
 import com.example.tranquilityfood.pojo.MealsByCategory
 import com.example.tranquilityfood.pojo.Meal
 import com.example.tranquilityfood.ui.activities.MealActivity
+import com.example.tranquilityfood.ui.adapters.CategoryMealAdapter
 import com.example.tranquilityfood.ui.adapters.PopularMealAdapter
 import com.example.tranquilityfood.viewmodel.HomeViewModel
 
@@ -22,6 +25,7 @@ class HomeFragment : Fragment() {
     lateinit var randomMeal: Meal
     private lateinit var homeViewModel : HomeViewModel
     private lateinit var popularMealAdapter: PopularMealAdapter
+    private lateinit var categoriesAdapter: CategoryMealAdapter
 
     companion object {
         const val MEAL_ID = "com.example.tranquilityfood.ui.fragments.idMeal"
@@ -55,9 +59,27 @@ class HomeFragment : Fragment() {
 
         homeViewModel.getPopularMeal()
         observerPopularMealLiveData()
-
         onPopularMealClick()
 
+        prepareCategoriesRecyclerView()
+        homeViewModel.getCategoriesMeal()
+        observerCategoriesLiveData()
+
+    }
+
+    private fun prepareCategoriesRecyclerView() {
+        categoriesAdapter = CategoryMealAdapter()
+
+        binding.rcHomeCategories.apply {
+            layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
+            adapter = categoriesAdapter
+        }
+    }
+
+    private fun observerCategoriesLiveData() {
+        homeViewModel.observerCategoriesMealLiveData().observe(viewLifecycleOwner, Observer {
+                categoriesAdapter.setCategoryList(it)
+        })
     }
 
     private fun onPopularMealClick() {

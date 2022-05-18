@@ -4,10 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tranquilityfood.pojo.MealsByCategoryList
-import com.example.tranquilityfood.pojo.MealsByCategory
-import com.example.tranquilityfood.pojo.Meal
-import com.example.tranquilityfood.pojo.MealList
+import com.example.tranquilityfood.pojo.*
 import com.example.tranquilityfood.retrofit.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +13,7 @@ import retrofit2.Response
 class HomeViewModel : ViewModel() {
     private val mealLiveData = MutableLiveData<Meal>()
     private val popularListLiveData = MutableLiveData<List<MealsByCategory>>()
+    private val categoriesLiveData = MutableLiveData<List<Category>>()
 
     fun getRandomMeal() {
         RetrofitInstance.retrofitApi.getRandomMeal().enqueue(object : Callback<MealList> {
@@ -55,11 +53,30 @@ class HomeViewModel : ViewModel() {
         })
     }
 
+    fun getCategoriesMeal() {
+        RetrofitInstance.retrofitApi.getCategoriesMeal().enqueue(object : Callback<CategoryList> {
+            override fun onResponse(call: Call<CategoryList>, response: Response<CategoryList>) {
+                response.body()?.let {
+                    categoriesLiveData.postValue(it.categories)
+                }
+            }
+
+            override fun onFailure(call: Call<CategoryList>, t: Throwable) {
+                Log.e("HomeVM", "dyakuyu bat'ko.... ${t.message.toString()}")
+            }
+
+        })
+    }
+
     fun observeRandomMealLiveData(): LiveData<Meal> {
         return mealLiveData
     }
 
     fun observePopularMealLiveData(): LiveData<List<MealsByCategory>> {
         return popularListLiveData
+    }
+
+    fun observerCategoriesMealLiveData(): LiveData<List<Category>> {
+        return categoriesLiveData
     }
 }
