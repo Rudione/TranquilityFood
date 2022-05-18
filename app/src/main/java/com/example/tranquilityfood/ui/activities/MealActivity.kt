@@ -1,5 +1,7 @@
 package com.example.tranquilityfood.ui.activities
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +20,7 @@ class MealActivity : AppCompatActivity() {
     private lateinit var idMeal: String
     private lateinit var nameMeal: String
     private lateinit var thumbMeal: String
+    private lateinit var buttonYoutube: String
     private lateinit var mealViewModel: MealViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,11 +34,21 @@ class MealActivity : AppCompatActivity() {
 
         mealViewModel.getDetailsLiveData(idMeal)
         observerGetMealInformation()
+
+        onClickYoutubeButton()
+    }
+
+    private fun onClickYoutubeButton() {
+        binding.activityMealYoutube.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(buttonYoutube))
+            startActivity(intent)
+        }
     }
 
     private fun observerGetMealInformation() {
         mealViewModel.observeMealDetailsLiveData().observe(this
         ) { meal ->
+            buttonYoutube = meal.strYoutube
             binding.activityMealTextCategories.text = "Category: ${meal!!.strCategory}"
             binding.activityMealTextCountry.text = "Country: ${meal.strArea}"
             binding.activityMealTextIntroduction.text = meal.strInstructions

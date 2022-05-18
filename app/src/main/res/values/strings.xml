@@ -9,4 +9,5 @@
     <string name="all_categories">All categories</string>
     <string name="favorites_fr">favorites</string>
     <string name="text_home_random">Its random food for you :)</string>
+    <string name="category_name_test">Category Name</string>
 </resources>

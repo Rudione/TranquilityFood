@@ -1,5 +1,6 @@
 package com.example.tranquilityfood.retrofit
 
+import com.example.tranquilityfood.pojo.MealsByCategoryList
 import com.example.tranquilityfood.pojo.MealList
 import retrofit2.Call
 import retrofit2.http.GET
@@ -12,4 +13,7 @@ interface MealAPI {
 
     @GET("lookup.php?")
     fun getDetailMeal(@Query("i") mealId: String): Call<MealList>
+
+    @GET("filter.php?")
+    fun getPopularMeal(@Query("c") meal: String): Call<MealsByCategoryList>
 }
