@@ -20,4 +20,7 @@ interface MealAPI {
 
     @GET("categories.php")
     fun getCategoriesMeal(): Call<CategoryList>
+
+    @GET("filter.php")
+    fun getMealByCategory(@Query("c") meal: String): Call<MealsByCategoryList>
 }

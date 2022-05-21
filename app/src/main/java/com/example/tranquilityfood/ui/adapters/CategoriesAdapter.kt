@@ -7,11 +7,12 @@ import com.bumptech.glide.Glide
 import com.example.tranquilityfood.databinding.CategoryItemBinding
 import com.example.tranquilityfood.pojo.Category
 
-class CategoryMealAdapter: RecyclerView.Adapter<CategoryMealAdapter.CategoryMealViewHolder>() {
-    private var categoriesList = ArrayList<Category>()
+class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.CategoryMealViewHolder>() {
+    private var list = ArrayList<Category>()
+    var onItemClick: ((Category) -> Unit)? = null
 
     fun setCategoryList(categoriesList : List<Category>) {
-        this.categoriesList = categoriesList as ArrayList<Category>
+        this.list = categoriesList as ArrayList<Category>
         notifyDataSetChanged()
     }
 
@@ -23,13 +24,17 @@ class CategoryMealAdapter: RecyclerView.Adapter<CategoryMealAdapter.CategoryMeal
 
     override fun onBindViewHolder(holder: CategoryMealViewHolder, position: Int) {
         Glide.with(holder.itemView)
-            .load(categoriesList[position].strCategoryThumb)
+            .load(list[position].strCategoryThumb)
             .into(holder.binding.categoryImg)
 
-        holder.binding.categoryTvName.text = categoriesList[position].strCategory
+        holder.binding.categoryTvName.text = list[position].strCategory
+
+       holder.itemView.setOnClickListener {
+           onItemClick!!.invoke(list[position])
+       }
     }
 
     override fun getItemCount(): Int {
-        return categoriesList.size
+        return list.size
     }
 }

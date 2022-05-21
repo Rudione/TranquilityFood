@@ -14,8 +14,9 @@ import com.bumptech.glide.Glide
 import com.example.tranquilityfood.databinding.FragmentHomeBinding
 import com.example.tranquilityfood.pojo.MealsByCategory
 import com.example.tranquilityfood.pojo.Meal
+import com.example.tranquilityfood.ui.activities.CategoryMealsActivity
 import com.example.tranquilityfood.ui.activities.MealActivity
-import com.example.tranquilityfood.ui.adapters.CategoryMealAdapter
+import com.example.tranquilityfood.ui.adapters.CategoriesAdapter
 import com.example.tranquilityfood.ui.adapters.PopularMealAdapter
 import com.example.tranquilityfood.viewmodel.HomeViewModel
 
@@ -25,19 +26,18 @@ class HomeFragment : Fragment() {
     lateinit var randomMeal: Meal
     private lateinit var homeViewModel : HomeViewModel
     private lateinit var popularMealAdapter: PopularMealAdapter
-    private lateinit var categoriesAdapter: CategoryMealAdapter
+    private lateinit var categoriesAdapter: CategoriesAdapter
 
     companion object {
         const val MEAL_ID = "com.example.tranquilityfood.ui.fragments.idMeal"
         const val MEAL_NAME = "com.example.tranquilityfood.ui.fragments.nameMeal"
         const val MEAL_THUMB = "com.example.tranquilityfood.ui.fragments.thumbMeal"
+        const val CATEGORY_NAME = "com.example.tranquilityfood.ui.fragments.categoryName"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-
-
     }
 
     override fun onCreateView(
@@ -64,11 +64,20 @@ class HomeFragment : Fragment() {
         prepareCategoriesRecyclerView()
         homeViewModel.getCategoriesMeal()
         observerCategoriesLiveData()
+        onCategoryClicks()
 
     }
 
+    private fun onCategoryClicks() {
+        categoriesAdapter.onItemClick = {
+            val intent = Intent(activity, CategoryMealsActivity::class.java)
+            intent.putExtra(CATEGORY_NAME, it.strCategory)
+            startActivity(intent)
+        }
+    }
+
     private fun prepareCategoriesRecyclerView() {
-        categoriesAdapter = CategoryMealAdapter()
+        categoriesAdapter = CategoriesAdapter()
 
         binding.rcHomeCategories.apply {
             layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
