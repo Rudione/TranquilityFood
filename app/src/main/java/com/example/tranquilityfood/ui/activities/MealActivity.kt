@@ -5,14 +5,17 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.tranquilityfood.R
 import com.example.tranquilityfood.databinding.ActivityMealBinding
+import com.example.tranquilityfood.db.MealDatabase
 import com.example.tranquilityfood.pojo.Meal
 import com.example.tranquilityfood.ui.fragments.HomeFragment
 import com.example.tranquilityfood.viewmodel.MealViewModel
+import com.example.tranquilityfood.viewmodel.MealViewModelFactory
 
 class MealActivity : AppCompatActivity() {
 
@@ -28,7 +31,10 @@ class MealActivity : AppCompatActivity() {
         binding = ActivityMealBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mealViewModel = ViewModelProvider(this)[MealViewModel::class.java]
+        val mealDatabase = MealDatabase.getInstance(this)
+        val viewModelFactory = MealViewModelFactory(mealDatabase)
+        mealViewModel = ViewModelProvider(this, viewModelFactory)[MealViewModel::class.java]
+
         getRandomMealInformation()
         setRandomMealInformation()
 
@@ -36,6 +42,16 @@ class MealActivity : AppCompatActivity() {
         observerGetMealInformation()
 
         onClickYoutubeButton()
+        onFavoriteClick()
+    }
+
+    private fun onFavoriteClick() {
+        binding.activityMealFlButton.setOnClickListener {
+            mealToSave?.let {
+                mealViewModel.insertMeal(it)
+                Toast.makeText(this, "You add meal food", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun onClickYoutubeButton() {
@@ -45,14 +61,15 @@ class MealActivity : AppCompatActivity() {
         }
     }
 
+    private var mealToSave: Meal? = null
     private fun observerGetMealInformation() {
         mealViewModel.observeMealDetailsLiveData().observe(this
         ) { meal ->
             buttonYoutube = meal.strYoutube
+            mealToSave = meal
             binding.activityMealTextCategories.text = "Category: ${meal!!.strCategory}"
             binding.activityMealTextCountry.text = "Country: ${meal.strArea}"
             binding.activityMealTextIntroduction.text = meal.strInstructions
-
             Log.d("MealCategory", "its: ${meal.strCategory}")
             Log.d("MealCategory", "its: ${meal.strArea}")
             Log.d("MealCategory", "its: ${meal.strInstructions}")
