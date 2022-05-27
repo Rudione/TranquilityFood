@@ -18,6 +18,7 @@ import com.example.tranquilityfood.ui.activities.MainActivity
 import com.example.tranquilityfood.ui.activities.MealActivity
 import com.example.tranquilityfood.ui.adapters.CategoriesAdapter
 import com.example.tranquilityfood.ui.adapters.PopularMealAdapter
+import com.example.tranquilityfood.ui.fragments.bottomsheet.MealBottomSheetFragment
 import com.example.tranquilityfood.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -68,6 +69,15 @@ class HomeFragment : Fragment() {
         observerCategoriesLiveData()
         onCategoryClicks()
 
+        onLongItemClick()
+
+    }
+
+    private fun onLongItemClick() {
+        popularMealAdapter.onLongItemClick = {
+            val mealBottomSheetFragment = MealBottomSheetFragment.newInstance(it.idMeal)
+            mealBottomSheetFragment.show(childFragmentManager, "Meal Info")
+        }
     }
 
     private fun onCategoryClicks() {
