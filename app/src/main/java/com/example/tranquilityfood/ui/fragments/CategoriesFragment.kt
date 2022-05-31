@@ -1,5 +1,6 @@
 package com.example.tranquilityfood.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tranquilityfood.R
 import com.example.tranquilityfood.databinding.FragmentCategoriesBinding
+import com.example.tranquilityfood.ui.activities.CategoryMealsActivity
 import com.example.tranquilityfood.ui.activities.MainActivity
 import com.example.tranquilityfood.ui.adapters.CategoriesAdapter
 import com.example.tranquilityfood.viewmodel.HomeViewModel
@@ -18,6 +20,8 @@ class CategoriesFragment : Fragment() {
     private lateinit var binding: FragmentCategoriesBinding
     private lateinit var categoriesAdapter: CategoriesAdapter
     private lateinit var viewModel: HomeViewModel
+    private lateinit var homeFragment: HomeFragment
+    val CATEGORY_NAME = "com.example.tranquilityfood.ui.fragments.categoryName"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,16 @@ class CategoriesFragment : Fragment() {
 
         prepareRecyclerView()
         observeCategories()
+
+        onCategoryClicks()
+    }
+
+    private fun onCategoryClicks() {
+        categoriesAdapter.onItemClick = {
+            val intent = Intent(activity, CategoryMealsActivity::class.java)
+            intent.putExtra(CATEGORY_NAME, it.strCategory)
+            startActivity(intent)
+        }
     }
 
     private fun observeCategories() {
