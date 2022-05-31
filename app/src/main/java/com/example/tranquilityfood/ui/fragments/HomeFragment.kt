@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.tranquilityfood.R
 import com.example.tranquilityfood.databinding.FragmentHomeBinding
 import com.example.tranquilityfood.pojo.MealsByCategory
 import com.example.tranquilityfood.pojo.Meal
@@ -71,6 +73,13 @@ class HomeFragment : Fragment() {
 
         onLongItemClick()
 
+        onSearchIconClick()
+    }
+
+    private fun onSearchIconClick() {
+        binding.llHomeSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment2)
+        }
     }
 
     private fun onLongItemClick() {

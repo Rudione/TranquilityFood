@@ -2,7 +2,6 @@ package com.example.tranquilityfood.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.tranquilityfood.databinding.MealItemBinding
 import com.example.tranquilityfood.pojo.Meal
 
-class FavoritesMealsAdapter: RecyclerView.Adapter<FavoritesMealsAdapter.FavoritesMealsViewHolder>() {
+class MealsAdapter: RecyclerView.Adapter<MealsAdapter.FavoritesMealsViewHolder>() {
 
     inner class FavoritesMealsViewHolder(val binding: MealItemBinding): RecyclerView.ViewHolder(binding.root)
 
