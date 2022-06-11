@@ -8,7 +8,7 @@ __Tranquility Food__ is a companion in the world of culinary recipes. With this 
 
 # Screenshots
 
-[fragments](fragments.png)
+![fragments](fragments.png)
 
 ***
 
