@@ -1,4 +1,4 @@
-package com.example.tranquilityfood.pojo
+package com.example.tranquilityfood.domain
 
 data class MealsByCategory(
     val idMeal: String,

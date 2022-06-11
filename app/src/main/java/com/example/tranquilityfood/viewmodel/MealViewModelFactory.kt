@@ -2,7 +2,7 @@ package com.example.tranquilityfood.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.tranquilityfood.db.MealDatabase
+import com.example.tranquilityfood.data.db.MealDatabase
 
 class MealViewModelFactory(
     private val mealDatabase: MealDatabase

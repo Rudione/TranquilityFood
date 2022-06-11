@@ -1,4 +1,4 @@
-package com.example.tranquilityfood.pojo
+package com.example.tranquilityfood.domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

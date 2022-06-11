@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tranquilityfood.pojo.MealsByCategory
-import com.example.tranquilityfood.pojo.MealsByCategoryList
-import com.example.tranquilityfood.retrofit.RetrofitInstance
+import com.example.tranquilityfood.domain.MealsByCategory
+import com.example.tranquilityfood.domain.MealsByCategoryList
+import com.example.tranquilityfood.data.retrofit.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

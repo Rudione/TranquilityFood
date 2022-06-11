@@ -1,11 +1,11 @@
-package com.example.tranquilityfood.db
+package com.example.tranquilityfood.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.tranquilityfood.pojo.Meal
+import com.example.tranquilityfood.domain.Meal
 
 @Database(entities = [Meal::class], version = 1)
 @TypeConverters(MealTypeConvertor::class)

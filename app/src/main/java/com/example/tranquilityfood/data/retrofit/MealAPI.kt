@@ -1,8 +1,8 @@
-package com.example.tranquilityfood.retrofit
+package com.example.tranquilityfood.data.retrofit
 
-import com.example.tranquilityfood.pojo.CategoryList
-import com.example.tranquilityfood.pojo.MealsByCategoryList
-import com.example.tranquilityfood.pojo.MealList
+import com.example.tranquilityfood.domain.CategoryList
+import com.example.tranquilityfood.domain.MealsByCategoryList
+import com.example.tranquilityfood.domain.MealList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

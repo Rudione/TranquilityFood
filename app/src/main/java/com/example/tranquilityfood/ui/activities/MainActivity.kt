@@ -7,8 +7,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.tranquilityfood.R
 import com.example.tranquilityfood.databinding.ActivityMainBinding
-import com.example.tranquilityfood.db.MealDatabase
-import com.example.tranquilityfood.ui.fragments.HomeFragment
+import com.example.tranquilityfood.data.db.MealDatabase
 import com.example.tranquilityfood.viewmodel.HomeViewModel
 import com.example.tranquilityfood.viewmodel.HomeViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView

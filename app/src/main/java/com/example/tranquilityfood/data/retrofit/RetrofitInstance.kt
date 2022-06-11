@@ -1,4 +1,4 @@
-package com.example.tranquilityfood.retrofit
+package com.example.tranquilityfood.data.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

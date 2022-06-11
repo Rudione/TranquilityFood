@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tranquilityfood.databinding.CategoryItemBinding
-import com.example.tranquilityfood.pojo.Category
+import com.example.tranquilityfood.domain.Category
 
 class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.CategoryMealViewHolder>() {
     private var list = ArrayList<Category>()

@@ -1,4 +1,4 @@
-package com.example.tranquilityfood.db
+package com.example.tranquilityfood.data.db
 
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters

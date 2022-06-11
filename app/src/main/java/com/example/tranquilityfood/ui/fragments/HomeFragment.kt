@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tranquilityfood.R
 import com.example.tranquilityfood.databinding.FragmentHomeBinding
-import com.example.tranquilityfood.pojo.MealsByCategory
-import com.example.tranquilityfood.pojo.Meal
+import com.example.tranquilityfood.domain.MealsByCategory
+import com.example.tranquilityfood.domain.Meal
 import com.example.tranquilityfood.ui.activities.CategoryMealsActivity
 import com.example.tranquilityfood.ui.activities.MainActivity
 import com.example.tranquilityfood.ui.activities.MealActivity
@@ -113,7 +113,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun onPopularMealClick() {
-
         popularMealAdapter.onItemClick = { meal ->
             val intent = Intent(activity, MealActivity::class.java)
             intent.putExtra(MEAL_ID, meal.idMeal)

@@ -1,8 +1,8 @@
-package com.example.tranquilityfood.db
+package com.example.tranquilityfood.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.tranquilityfood.pojo.Meal
+import com.example.tranquilityfood.domain.Meal
 
 @Dao
 interface MealDao {

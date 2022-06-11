@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tranquilityfood.db.MealDatabase
-import com.example.tranquilityfood.pojo.*
-import com.example.tranquilityfood.retrofit.RetrofitInstance
+import com.example.tranquilityfood.data.db.MealDatabase
+import com.example.tranquilityfood.domain.*
+import com.example.tranquilityfood.data.retrofit.RetrofitInstance
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback

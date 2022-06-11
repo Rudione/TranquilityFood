@@ -6,13 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.tranquilityfood.R
 import com.example.tranquilityfood.databinding.ActivityMealBinding
-import com.example.tranquilityfood.db.MealDatabase
-import com.example.tranquilityfood.pojo.Meal
+import com.example.tranquilityfood.data.db.MealDatabase
+import com.example.tranquilityfood.domain.Meal
 import com.example.tranquilityfood.ui.fragments.HomeFragment
 import com.example.tranquilityfood.viewmodel.MealViewModel
 import com.example.tranquilityfood.viewmodel.MealViewModelFactory
